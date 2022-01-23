@@ -1,18 +1,6 @@
 defmodule Snowtracex do
   @moduledoc """
-  Documentation for `Snowtracex`.
+  Snowtracex is a simple (unofficial) wrapper written in Elixir for the [Avalanche C-Chain
+  (Snowtrace) Developer APIs](https://snowtrace.io/apis).
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Snowtracex.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
