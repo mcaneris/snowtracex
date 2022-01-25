@@ -3,25 +3,22 @@ defmodule Snowtracex.Blocks do
   Provides access to Snowtrace Blocks API.
   [API Documentation](https://snowtrace.io/apis#blocks)
   """
-  alias Snowtracex.Client
+  use Snowtracex.APIModule
 
   @module :block
 
-  @type address :: WT.Address.t()
   @type timestamp :: integer() | DateTime.t()
-  @type block_number :: integer()
 
-  @spec get_block_number_by_timestamp(timestamp :: timestamp()) :: block_number() | nil
+  @spec get_block_number_by_timestamp(timestamp()) ::
+          {:ok, integer()} | {:error, any()}
   def get_block_number_by_timestamp(timestamp) when is_integer(timestamp) do
     action = "getblocknobytime"
     params = [timestamp: "#{timestamp}", closest: "before"]
 
-    case Client.request(@module, action, params) do
-      {:ok, block} ->
-        String.to_integer(block)
-
-      _ ->
-        nil
+    Client.request(@module, action, params)
+    |> case do
+      {:ok, block} -> String.to_integer(block)
+      error -> error
     end
   end
 
