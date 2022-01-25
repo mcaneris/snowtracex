@@ -14,7 +14,8 @@ defmodule Snowtracex.MixProject do
       package: package(),
       docs: docs(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      source_url: @source_url
     ]
   end
 
@@ -41,7 +42,10 @@ defmodule Snowtracex.MixProject do
       {:jason, ">= 1.0.0"},
 
       # Code Analysis
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+
+      # Documentation
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
