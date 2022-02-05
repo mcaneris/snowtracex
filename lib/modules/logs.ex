@@ -1,4 +1,4 @@
-defmodule API.Snowtrace.Logs do
+defmodule Snowtracex.Logs do
   @moduledoc """
   Provides access to Snowtrace Logs API.
   [API Documentation](https://snowtrace.io/apis#logs)

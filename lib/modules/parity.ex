@@ -1,4 +1,4 @@
-defmodule API.Snowtrace.Parity do
+defmodule Snowtracex.Parity do
   @moduledoc """
   Provides access to Snowtrace GETH/Parity Proxy API.
   [API Documentation](https://snowtrace.io/apis#proxy)
@@ -24,6 +24,14 @@ defmodule API.Snowtrace.Parity do
   @spec get_transaction(hash :: binary()) :: {:ok, any()} | {:error, any()}
   def get_transaction(tx_hash) do
     action = "eth_getTransactionByHash"
+    params = [txhash: tx_hash]
+
+    Client.request(@module, action, params)
+  end
+
+  @spec get_transaction_receipt(hash :: binary()) :: {:ok, any()} | {:error, any()}
+  def get_transaction_receipt(tx_hash) do
+    action = "eth_getTransactionReceipt"
     params = [txhash: tx_hash]
 
     Client.request(@module, action, params)
